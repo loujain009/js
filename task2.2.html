@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<link href="../css/style.css" rel="stylesheet">
+
+<head><script>
+
+function addTask() {
+          var x = document.forms["myForm"]["name"].value;
+            if (x == "") {
+                alert("Task must be filled out");
+                return false;
+            } 
+            const Tasks = []
+
+            let taskName = document.querySelector('#name').value;
+            let taskNamee = document.querySelector('#un').value;
+            let priority = document.querySelector("#Majorr").value;
+
+
+            Tasks.push({ task: taskName, priority: priority })
+
+            console.log("Task name: " + taskName + "Task namee: " + taskNamee +" priority name: " + priority)
+            console.log("Task name: ", Tasks)
+            let TasksTableElem = document.querySelector("#TasksTable");
+            //create td and add valude "innerText"
+            tdTaskNode = document.createElement("td")
+            tdTaskNode.innerHTML = taskName
+
+            tdPriorityNodee = document.createElement("td")
+            tdPriorityNodee.innerText = taskNamee
+
+            tdPriorityNode = document.createElement("td")
+            tdPriorityNode.innerText = priority
+            tdPriorityNode.classList.add(getColor(priority))
+
+            TRrow = document.createElement("tr")
+
+
+            TRrow.appendChild(tdTaskNode)
+            TRrow.appendChild(tdPriorityNodee)
+            TRrow.appendChild(tdPriorityNode)
+
+            document.querySelector("#TasksTable").appendChild(TRrow)
+        }
+        function getColor(priorityText) {
+            switch (priorityText) {
+                case "IT":
+                    return "rose1"
+                case "CS":
+                    return "rose2"
+                case "IS":
+                    return "rose3"  
+                    break;
+                default:
+                    break;
+            }} </script> </head>
+<body>
+<br><br><br><br>
+
+    <div>
+        <form name="myForm" method="post" onsubmit="return validateForm()">
+          <h2>General Information</h2>
+            <label for="name">name</label>
+            <input type="text" id="name"  name="name" placeholder="Your name..">
+            
+            <label for="un">university</label>
+            <input type="text" id="un"  name="un" placeholder="Your university..">
+            <br><br>
+            <label  for="Majorr">Major</label>
+            <select id="Majorr" name="Majorr">
+                <option value="IT">Information Technology</option>
+                <option value="CS">Computer Science</option>
+                <option value="IS">Information Systems</option>
+            </select>
+            
+            <input type="button" onclick="addTask()" value="Add">
+        </form>
+    </div>
+    <br><br><br>
+    <table id="TasksTable" border="2"> 
+    
+        <tr>
+            <th>Name</th>
+            <th>University </th>
+            <th>Major </th>
+        </tr></table> </body> </html>
